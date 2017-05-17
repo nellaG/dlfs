@@ -33,13 +33,18 @@ def predict(network, x):
     return y
 
 
-x, t = get_data()
-network = init_network()
-accuracy_cnt = 0
-for i in range(len(x)):
-    y = predict(network, x[i])
-    p= np.argmax(y) # 最も確率の高い要素のインデックスを取得
-    if p == t[i]:
-        accuracy_cnt += 1
+def main():
+    x, t = get_data()
+    network = init_network()
+    accuracy_cnt = 0
+    for i in range(len(x)):
+        y = predict(network, x[i])
+        p = np.argmax(y)  # 확률이 가장 높은 원소의 인덱스
+        if p == t[i]:
+            accuracy_cnt += 1
 
-print("Accuracy:" + str(float(accuracy_cnt) / len(x)))
+    print("Accuracy:" + str(float(accuracy_cnt) / len(x)))
+
+
+if __name__ == "__main__":
+    main()
